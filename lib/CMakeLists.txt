@@ -1,15 +1,26 @@
-project(libdmedia)
+project(libdms)
 
+#
+# Inludes
+#
 include_directories(include)
 
-set(libdmedia_SOURCES
+find_package( Boost)
+if( NOT Boost_FOUND)
+  message( "boost library not found on system.")
+  message( FATAL_ERROR "Please install boost library.")
+endif( NOT Boost_FOUND)
+
+# define libdms sources
+set( libdms_SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/src/RessourceManager.cpp)
 
-add_library(dmedia SHARED ${libdmedia_SOURCES})
+# add libdms as shared lib (or dll)
+add_library( dms SHARED ${libdms_SOURCES})
 
 
 #
 # Add Tests
 #
-add_executable(dmediaTests ${CMAKE_CURRENT_SOURCE_DIR}/tests/main.cpp)
-target_link_libraries(dmediaTests dmedia)
+add_executable( dmsTests ${CMAKE_CURRENT_SOURCE_DIR}/tests/main.cpp)
+target_link_libraries( dmsTests dms)
