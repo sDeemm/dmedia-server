@@ -18,9 +18,5 @@ set( libdms_SOURCES
 # add libdms as shared lib (or dll)
 add_library( dms SHARED ${libdms_SOURCES})
 
-
-#
-# Add Tests
-#
-add_executable( dmsTests ${CMAKE_CURRENT_SOURCE_DIR}/tests/main.cpp)
-target_link_libraries( dmsTests dms)
+# add tests subdirectory
+add_subdirectory( tests)
