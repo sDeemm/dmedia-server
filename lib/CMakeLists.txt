@@ -3,7 +3,7 @@ project(libdms)
 #
 # Inludes
 #
-include_directories(include)
+include_directories(include include/impl)
 
 find_package( Boost)
 if( NOT Boost_FOUND)
@@ -13,6 +13,7 @@ endif( NOT Boost_FOUND)
 
 # define libdms sources
 set( libdms_SOURCES
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/impl/RessourceManagerImpl.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/RessourceManager.cpp)
 
 # add libdms as shared lib (or dll)

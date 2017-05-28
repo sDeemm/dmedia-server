@@ -1,12 +1,31 @@
 #include "RessourceManager.h"
-#include <iostream>
+#include "RessourceManagerImpl.h"
 
-void RessourceManager::start()
+RessourceManager::RessourceManager() : d_ptr(new RessourceManagerImpl)
 {
-    std::cout<< "on Start() ...\n";
+
+}
+RessourceManager::~RessourceManager()
+{
+    delete d_ptr;
 }
 
-void RessourceManager::stop()
+void RessourceManager::Start()
 {
-    std::cout<< "on Stop() ...\n";
+    d_ptr->Start();
+}
+
+void RessourceManager::Stop()
+{
+    d_ptr->Stop();
+}
+
+bool RessourceManager::SetRoot(const char* iPath)
+{
+    return d_ptr->SetRoot(iPath);
+}
+
+const char* RessourceManager::GetRoot() const
+{
+    return d_ptr->GetRoot();
 }

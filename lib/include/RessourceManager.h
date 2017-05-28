@@ -2,15 +2,24 @@
 #define RESSOURCEMANAGER_H
 
 #include "libdmedia.h"
+#include "Manager.h"
 
-class LIBDMEDIA_API RessourceManager
+class RessourceManagerImpl;
+
+class LIBDMEDIA_API RessourceManager : public Manager<RessourceManager>
 {
 public:
-    RessourceManager() {}
-    ~RessourceManager() {}
+    RessourceManager();
+    ~RessourceManager();
 
-    void start();
-    void stop();
+    void Start() override;
+    void Stop() override;
+
+    bool SetRoot(const char* iPath);
+    const char* GetRoot() const;
+
+private:
+    RessourceManagerImpl* const d_ptr;
 };
 
 #endif // RESSOURCEMANAGER_H
